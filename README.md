@@ -23,12 +23,60 @@
 
 ## Description
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+Daily Health API - A NestJS-based API for health data management with PostgreSQL database and Vercel Blob Storage integration.
 
 ## Project setup
 
 ```bash
 $ pnpm install
+```
+
+## Local Setup
+
+### Prerequisites
+
+- Node.js (v22 or higher) - Install via [NVM](https://github.com/nvm-sh/nvm)
+- PostgreSQL (for local development) - Install via [PostgreSQL Official](https://www.postgresql.org/download/)
+- pnpm - Install via `npm install -g pnpm`
+
+### Environment Configuration
+
+1. Copy the example environment file:
+
+```bash
+cp .env.example .env
+```
+
+2. Configure your environment variables in `.env`:
+   - For **local development**: Set `ENVIRONMENT=local` and configure local PostgreSQL credentials
+   - For **production**: Set `ENVIRONMENT=production` and configure Vercel Neon PostgreSQL credentials
+
+### Local Database Setup
+
+1. Install PostgreSQL locally if not already installed
+2. Create the database:
+
+```bash
+psql -U postgres -c "CREATE DATABASE daily_health;"
+```
+
+3. Update `.env` with your local PostgreSQL credentials:
+
+```
+ENVIRONMENT=local
+DB_HOST=localhost
+DB_PORT=5432
+DB_USER=postgres
+DB_PASSWORD=your_password
+DB_NAME=daily_health
+```
+
+### Alternative: Use Production Database for Testing
+
+If you don't have PostgreSQL installed locally, you can temporarily use the production database for testing by setting:
+
+```
+ENVIRONMENT=production
 ```
 
 ## Compile and run the project
@@ -42,6 +90,12 @@ $ pnpm run start:dev
 
 # production mode
 $ pnpm run start:prod
+```
+
+### Build
+
+```bash
+$ pnpm run build
 ```
 
 ## Run tests
